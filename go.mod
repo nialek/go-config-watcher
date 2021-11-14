@@ -1,4 +1,4 @@
-module go-config-watcher
+module github.com/nialek/go-config-watcher
 
 go 1.17
 

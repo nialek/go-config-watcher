@@ -1,1 +1,2 @@
 - [ ] generics
+- [ ] non auto read
