@@ -16,7 +16,7 @@ func main() {
 		log.Fatalln(err)
 	}
 
-	watcher, _ := configwatcher.New(v)
+	watcher, _ := configwatcher.New(v, true)
 	number := watcher.Get("number", func(old interface{}, new interface{}) {
 		log.Println("Number:", old, "->", new)
 	})

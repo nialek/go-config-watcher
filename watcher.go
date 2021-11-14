@@ -17,19 +17,25 @@ type Watcher struct {
 	values    valueMap
 }
 
-func New(v *viper.Viper) (*Watcher, error) {
+func New(v *viper.Viper, autoWatch bool) (*Watcher, error) {
 	w := &Watcher{
 		v:         v,
 		values:    make(valueMap),
 		callbacks: make(callbackMap),
 	}
 
-	v.WatchConfig()
-	v.OnConfigChange(func(in fsnotify.Event) {
-		w.traverseChanges()
-	})
+	if autoWatch {
+		v.WatchConfig()
+		v.OnConfigChange(func(in fsnotify.Event) {
+			w.traverseChanges()
+		})
+	}
 
 	return w, nil
+}
+
+func (w *Watcher) LoadChanges() {
+	w.traverseChanges()
 }
 
 func (w *Watcher) traverseChanges() {
