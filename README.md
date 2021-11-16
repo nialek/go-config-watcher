@@ -8,3 +8,9 @@ ideas, go ahead and suggest them.
 
 ### Usage
 Check the `examples` directory
+
+### Todo
+- generics
+- other config libraries
+- interface instead of direct Viper usage
+- tests
